@@ -1,6 +1,7 @@
-<h3>{{ cd.title}}</h3>
+<h3>{{ cd.title | uppercase}}</h3>
 <img [src]="cd.image" alt="">
-<strong>{{cd.price}}</strong>
+<strong>{{cd.price | currency}}</strong>
+<p>{{cd.description}}</p>
 <button (click)="addCart()"> + Carrito</button>
 
 
