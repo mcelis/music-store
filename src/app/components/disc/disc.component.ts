@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import {Disc} from '../../models/disc'
+import {DiscoComponent} from '../../disco/disco.component';
+import {Disc} from '../../models/disc';
 
 @Component({
   selector: 'app-disc',
@@ -12,6 +13,10 @@ export class DiscComponent implements OnInit {
   @Input() cd: Disc;
   @Output()
   discadded: EventEmitter<any> = new EventEmitter();
+
+  sysdate = new Date();
+
+  
   
   addCart(){
     console.log('se agrego al carrito');
