@@ -14,7 +14,8 @@ import { ContactComponent } from './components/contact/contact.component';
 import { DiscoComponent } from './disco/disco.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { BannerComponent } from './components/banner/banner.component'
+import { BannerComponent } from './components/banner/banner.component';
+import { DiscDetailComponent } from './components/disc-detail/disc-detail.component'
 
 import { } from './material/material.module';
 import { MatButtonModule } from '@angular/material/button';
@@ -37,9 +38,9 @@ import { UserRegisterComponent } from './components/user-register/user-register.
     HeaderComponent,
     FooterComponent,
     BannerComponent,
-
     LoginComponent,
-      UserRegisterComponent
+    UserRegisterComponent,
+    DiscDetailComponent
   ],
   imports: [
     BrowserModule,
