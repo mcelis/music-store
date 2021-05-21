@@ -8,5 +8,5 @@ export interface ILogin {
 export interface ApiLogin {
   success : boolean,
   message : string,
-  token : string
+  token? : string
 }

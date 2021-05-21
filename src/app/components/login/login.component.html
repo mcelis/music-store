@@ -1,1 +1,52 @@
-<p>login works!</p>
+<div class="center">
+  <h1 >Login</h1>
+</div>
+
+<div class=" center">
+  <div class="">
+
+    <form [formGroup]="rForm" (ngSubmit)="onSubmit(rForm.value)">
+      <div>
+        <mat-form-field class="example-full-width">
+          <mat-label>Usuario</mat-label>
+          <input
+            matInput
+            type="text"
+            placeholder="Usuario"
+            formControlName="user"
+          />
+        </mat-form-field>
+        <div *ngIf="!rForm.controls['user'].valid && rForm.controls['user'].touched " class="error">Debe ingresar un nombre de usuario con más de tres caracteres!</div>
+      </div>
+
+      <div>
+        <mat-form-field class="example-full-width">
+          <mat-label>Contraseña</mat-label>
+          <input
+            matInput
+            type="password"
+            placeholder="password"
+            formControlName="password"
+          />
+        </mat-form-field>
+        <div *ngIf="!rForm.controls['password'].valid && rForm.controls['password'].touched " class="error">Debe ingresar una contraseña con mas de 6 caracteres</div>
+      </div>
+
+      <div>
+        <button
+          type="submit"
+          class="full-width example-full-width"
+          mat-raised-button
+          color="primary"
+        >
+          Iniciar sesion
+        </button>
+      </div>
+
+
+
+    </form>
+
+  </div>
+</div>
+

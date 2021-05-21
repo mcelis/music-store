@@ -1,7 +1,7 @@
 import { Login } from './../models/login';
 import { Injectable } from '@angular/core';
 import { ILogin, ApiLogin } from './../interfaces/ilogin'
-import { HttpClient } from '@angular/common/http'
+import { HttpClient  } from '@angular/common/http'
 import { Subject, Observable } from 'rxjs';
 
 
@@ -11,14 +11,17 @@ import { Subject, Observable } from 'rxjs';
 export class LoginService {
 
   login: ILogin[] = [];
-  login$: Subject<ILogin[]>;
 
   constructor(private http: HttpClient) {
-    this.login$ = new Subject();
   }
 
   userLogin(login: ILogin) {
-    this.http.post<ApiLogin>('/user/login', login).subscribe(data => {
+    //debugger;
+
+    this.http.post<ApiLogin>('http://localhost:1337/api/user/login', login).subscribe(data => {
+      console.log(data);
+      //debugger;
+
       return data;
     })
   }
