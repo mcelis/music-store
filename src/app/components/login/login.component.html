@@ -1,52 +1,80 @@
-<div class="center">
-  <h1 >Login</h1>
-</div>
+<app-header token="{{ strToken }}"></app-header>
 
-<div class=" center">
-  <div class="">
+<div class="example-container">
+  <div class="form-container">
+    <form
+      [formGroup]="rForm"
+      (ngSubmit)="onSubmit(rForm.value)"
+      class="form"
+      novalidate
+    >
+      <mat-form-field class="form-element">
+        <mat-label>Usuario</mat-label>
 
-    <form [formGroup]="rForm" (ngSubmit)="onSubmit(rForm.value)">
-      <div>
-        <mat-form-field class="example-full-width">
-          <mat-label>Usuario</mat-label>
-          <input
-            matInput
-            type="text"
-            placeholder="Usuario"
-            formControlName="user"
-          />
-        </mat-form-field>
-        <div *ngIf="!rForm.controls['user'].valid && rForm.controls['user'].touched " class="error">Debe ingresar un nombre de usuario con más de tres caracteres!</div>
-      </div>
+        <input matInput formControlName="user" placeholder="Usuario" />
+        <mat-icon matSuffix>face</mat-icon>
+        <mat-hint>Errors appear instantly!</mat-hint>
+        <mat-error
+          *ngIf="
+            !rForm.controls['user'].valid && rForm.controls['user'].touched
+          "
+        >
+          Debe ingresar un nombre de usuario con más de 3 caracteres!
+        </mat-error>
+      </mat-form-field>
 
-      <div>
-        <mat-form-field class="example-full-width">
-          <mat-label>Contraseña</mat-label>
-          <input
-            matInput
-            type="password"
-            placeholder="password"
-            formControlName="password"
-          />
-        </mat-form-field>
-        <div *ngIf="!rForm.controls['password'].valid && rForm.controls['password'].touched " class="error">Debe ingresar una contraseña con mas de 6 caracteres</div>
-      </div>
+      <br />
+
+      <mat-form-field class="form-element">
+        <mat-label>Contraseña</mat-label>
+        <input
+          matInput
+          type="password"
+          placeholder="password"
+          formControlName="password"
+        />
+        <mat-icon matSuffix>visibility_off</mat-icon>
+        <mat-hint>Errors appear instantly!</mat-hint>
+        <mat-error
+          *ngIf="
+            !rForm.controls['password'].valid &&
+            rForm.controls['password'].touched
+          "
+        >
+          Debe ingresar una contraseña con mas de 6 caracteres
+        </mat-error>
+      </mat-form-field>
+
+      <mat-error class="center" *ngIf="messageError">
+        <strong>{{ messageError }}</strong>
+      </mat-error>
 
       <div>
         <button
+          [disabled]="!rForm.valid"
           type="submit"
-          class="full-width example-full-width"
           mat-raised-button
           color="primary"
+          style="width: 100%"
         >
           Iniciar sesion
         </button>
+
+        <br />
+        <span class="center">ó</span>
+        <br />
+
+        <button
+          [routerLink]="['/userRegister']"
+          type="button"
+          mat-raised-button
+          color="primary"
+          style="width: 100%"
+        >
+          Crear nuevo usuario
+          <span class="material-icons"> person_add_alt_1 </span>
+        </button>
       </div>
-
-
-
     </form>
-
   </div>
 </div>
-

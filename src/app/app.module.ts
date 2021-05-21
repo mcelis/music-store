@@ -24,6 +24,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { LoginComponent } from './components/login/login.component';
+import { UserRegisterComponent } from './components/user-register/user-register.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { LoginComponent } from './components/login/login.component';
     FooterComponent,
     BannerComponent,
 
-    LoginComponent
+    LoginComponent,
+      UserRegisterComponent
   ],
   imports: [
     BrowserModule,

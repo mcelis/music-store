@@ -1,9 +1,10 @@
-import { ApiLogin } from './../../interfaces/ilogin';
-import { Login } from './../../models/login';
+
+import { Login, ApiLogin } from './../../models/login';
 import { LoginService } from './../../services/login.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-login',
@@ -12,9 +13,14 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  @Output() tokenEvent: EventEmitter<string> = new EventEmitter();
+
+  strToken: string;
+
   rForm: FormGroup;
   _modelLogin: Login;
-  //respSvcLogin!: ApiLogin;
+  respSvcLogin: ApiLogin;
+  messageError: string;
 
   constructor(private router: Router, private fb: FormBuilder, private _LoginService: LoginService) {
 
@@ -24,10 +30,15 @@ export class LoginComponent implements OnInit {
     });
 
     this._modelLogin = new Login("", "");
+    this.respSvcLogin = new ApiLogin(false, '', '')
+    this.messageError = '';
+    this.strToken = '';
   }
 
   ngOnInit(): void {
     this._modelLogin = new Login("", "");
+    this.respSvcLogin = new ApiLogin(false, '', '');
+    this.messageError = '';
   }
 
   onSubmit(post: any) {
@@ -38,11 +49,22 @@ export class LoginComponent implements OnInit {
     this._modelLogin.user = post.user;
     this._modelLogin.password = post.password;
 
-    let respSvcLogin = this._LoginService.userLogin(this._modelLogin);
+    this._LoginService.userLogin(this._modelLogin).subscribe(
+      data => {
+        if (data.success) {
+          this.strToken = data.token;
+          this.router.navigate(["/disco"]);
+        } else {
+          this.messageError = data.message;
+          console.log(this.messageError);
+          this.strToken = 'token';
+        }
+      },
+      err => { }
+    );
 
-
-
-    this.router.navigate(["/disco"]);
   }
+
+
 
 }
