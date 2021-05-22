@@ -15,7 +15,8 @@ import { DiscoComponent } from './disco/disco.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BannerComponent } from './components/banner/banner.component';
-import { DiscDetailComponent } from './components/disc-detail/disc-detail.component'
+import { DiscDetailComponent } from './components/disc-detail/disc-detail.component';
+import { LayoutComponent } from './components/layout/layout.component'
 
 import { } from './material/material.module';
 import { MatButtonModule } from '@angular/material/button';
@@ -40,7 +41,8 @@ import { UserRegisterComponent } from './components/user-register/user-register.
     BannerComponent,
     LoginComponent,
     UserRegisterComponent,
-    DiscDetailComponent
+    DiscDetailComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,

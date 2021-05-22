@@ -3,7 +3,8 @@
 <strong>{{cd.price | currency}}</strong>
 <p>{{cd.description}}</p>
 <p>{{sysdate | date}}</p>
-<button (click)="addCart()"> + Carrito</button>
+<button (click)="addCart()">+ Cart</button>
+<a [routerLink]="['/disco', cd.id]">Details</a>
 
 
 
