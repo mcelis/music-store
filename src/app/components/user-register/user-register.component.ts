@@ -1,4 +1,11 @@
+import { ApiUserInfoResponse } from './../../models/usuario';
+
+
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UserInfo } from 'src/app/models/usuario';
+import { UserInfoService } from 'src/app/services/user-info.service';
 
 @Component({
   selector: 'app-user-register',
@@ -7,9 +14,58 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserRegisterComponent implements OnInit {
 
-  constructor() { }
+  rForm: FormGroup;
+  _modelIUserInfo: UserInfo;
+  respSvcUser: ApiUserInfoResponse;
+  messageError: string;
+  messageSucces: string;
+
+  constructor(private router: Router, private fb: FormBuilder, private _UserService: UserInfoService) {
+
+    this.rForm = fb.group({
+      'user': ["", Validators.compose([Validators.required, Validators.minLength(3)])],
+      'password': ["", Validators.compose([Validators.required, Validators.minLength(6)])],
+      "name": ["", Validators.compose([Validators.required,])],
+      "surnames": ["", Validators.compose([Validators.required,])],
+      "email": ["", Validators.compose([Validators.required,])],
+      "phone": ["", Validators.compose([Validators.required, Validators.minLength(10)])],
+
+    });
+
+    this._modelIUserInfo = new UserInfo("", "", "", "", "", 0);
+    this.respSvcUser = new ApiUserInfoResponse(false, '');
+    this.messageError = '';
+    this.messageSucces = '';
+  }
 
   ngOnInit(): void {
+  }
+
+  onSubmit(post: any) {
+    this.userRegister(post);
+  }
+
+  userRegister(post: any) {
+
+    this._modelIUserInfo.user = post.user;
+    this._modelIUserInfo.password = post.password;
+    this._modelIUserInfo.name = post.name;
+    this._modelIUserInfo.surnames = post.surnames;
+    this._modelIUserInfo.email = post.email;
+    this._modelIUserInfo.phone = post.phone;
+
+    this._UserService.createUser(this._modelIUserInfo).subscribe(
+      data => {
+
+        if (data.success) {
+          this.messageSucces = data.message;
+        } else {
+          this.messageError = data.message;
+        }
+      },
+      err => { }
+    );
+
   }
 
 }

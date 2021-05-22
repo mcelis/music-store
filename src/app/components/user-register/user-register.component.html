@@ -1,3 +1,144 @@
 <app-header></app-header>
 
-<p>user-register works!</p>
+<div class="example-container">
+  <div class="form-container">
+    <form
+      [formGroup]="rForm"
+      (ngSubmit)="onSubmit(rForm.value)"
+      class="form"
+      novalidate
+    >
+      <mat-form-field class="form-element">
+        <mat-label>Usuario</mat-label>
+
+        <input matInput formControlName="user" placeholder="Usuario" />
+        <mat-icon matSuffix>face</mat-icon>
+        <mat-hint>Errors appear instantly!</mat-hint>
+        <mat-error
+          *ngIf="
+            !rForm.controls['user'].valid && rForm.controls['user'].touched
+          "
+        >
+          Debe ingresar un nombre de usuario con más de 3 caracteres!
+        </mat-error>
+      </mat-form-field>
+
+      <br />
+
+      <mat-form-field class="form-element">
+        <mat-label>Contraseña</mat-label>
+        <input
+          matInput
+          type="password"
+          placeholder="password"
+          formControlName="password"
+        />
+        <mat-icon matSuffix>visibility_off</mat-icon>
+        <mat-hint>Errors appear instantly!</mat-hint>
+        <mat-error
+          *ngIf="
+            !rForm.controls['password'].valid &&
+            rForm.controls['password'].touched
+          "
+        >
+          Debe ingresar una contraseña con mas de 6 caracteres
+        </mat-error>
+      </mat-form-field>
+
+      <br />
+
+      <mat-form-field class="form-element">
+        <mat-label>Nombres</mat-label>
+        <input matInput formControlName="name" placeholder="Nombres" />
+        <mat-icon matSuffix>person</mat-icon>
+        <mat-hint>Errors appear instantly!</mat-hint>
+        <mat-error
+          *ngIf="
+            !rForm.controls['name'].valid && rForm.controls['name'].touched
+          "
+        >
+          Debe ingresar sus nombres
+        </mat-error>
+      </mat-form-field>
+
+      <br />
+
+      <mat-form-field class="form-element">
+        <mat-label>Apellidos</mat-label>
+        <input matInput formControlName="surnames" placeholder="Apellidos" />
+        <mat-icon matSuffix>person</mat-icon>
+        <mat-hint>Errors appear instantly!</mat-hint>
+        <mat-error
+          *ngIf="
+            !rForm.controls['surnames'].valid &&
+            rForm.controls['surnames'].touched
+          "
+        >
+          Debe ingresar sus apellidos
+        </mat-error>
+      </mat-form-field>
+
+      <br />
+
+      <mat-form-field class="form-element">
+        <mat-label>Correo</mat-label>
+        <input
+          matInput
+          formControlName="email"
+          placeholder="Correo"
+          type="email"
+          pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+        />
+        <mat-icon matSuffix>mail</mat-icon>
+        <mat-hint>Errors appear instantly!</mat-hint>
+        <mat-error
+          *ngIf="
+            !rForm.controls['email'].valid && rForm.controls['email'].touched
+          "
+        >
+          Debe ingresar un correo electronico valido
+        </mat-error>
+      </mat-form-field>
+
+      <br />
+
+      <mat-form-field class="form-element">
+        <mat-label>Celular</mat-label>
+        <input matInput formControlName="phone" placeholder="Celular" />
+        <mat-icon matSuffix>phone</mat-icon>
+        <mat-hint>Errors appear instantly!</mat-hint>
+        <mat-error
+          *ngIf="
+            !rForm.controls['phone'].valid && rForm.controls['phone'].touched
+          "
+        >
+          Debe ingresar su numero de celular
+        </mat-error>
+      </mat-form-field>
+
+      <!-- <mat-error class="center" *ngIf="messageError">
+        <strong>{{ messageError }}</strong>
+      </mat-error>
+      <mat-error class="center" *ngIf="messageSucces">
+        <strong>{{ messageSucces }}</strong>
+      </mat-error> -->
+
+      <mat-card *ngIf="messageError">{{ messageError }}</mat-card>
+
+      <mat-card *ngIf="messageSucces">{{ messageSucces }}</mat-card>
+
+      <div>
+        <button
+          [disabled]="!rForm.valid"
+          type="submit"
+          mat-raised-button
+          color="primary"
+          style="width: 100%"
+        >
+          Crear nuevo usuario
+          <span class="material-icons"> person_add_alt_1 </span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

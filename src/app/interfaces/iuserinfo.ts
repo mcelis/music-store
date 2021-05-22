@@ -1,4 +1,4 @@
-export interface IUsuario {
+export interface IUserInfo {
 
   user: string;
   password: string;
@@ -8,7 +8,7 @@ export interface IUsuario {
   phone: number;
 }
 
-export interface ApiUsuario {
+export interface IApiUserInfoResponse {
   success : boolean,
   message : string,
 }

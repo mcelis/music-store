@@ -1,6 +1,6 @@
-import { IUsuario } from "../interfaces/iusuario";
+import { IApiUserInfoResponse, IUserInfo } from '../interfaces/iuserinfo';
 
-export class Usuario implements IUsuario {
+export class UserInfo implements IUserInfo {
 
   user: string;
   password: string;
@@ -25,6 +25,19 @@ export class Usuario implements IUsuario {
     this.email = email;
     this.phone = phone;
 
+  }
+
+}
+
+export class ApiUserInfoResponse implements IApiUserInfoResponse {
+  success: boolean;
+  message: string;
+
+  constructor(
+    success: boolean,
+    message: string,) {
+    this.success = success;
+    this.message = message;
   }
 
 }

@@ -1,5 +1,5 @@
 
-import { ILogin, IApiLogin } from "../interfaces/ilogin";
+import { ILogin, IApiLoginResponse } from "../interfaces/ilogin";
 
 export class Login implements ILogin {
 
@@ -18,7 +18,7 @@ export class Login implements ILogin {
 
 }
 
-export class ApiLogin implements IApiLogin {
+export class ApiLoginResponse implements IApiLoginResponse {
   success: boolean;
   message: string;
   token?: string;

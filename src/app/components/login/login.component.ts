@@ -1,5 +1,5 @@
 
-import { Login, ApiLogin } from './../../models/login';
+import { Login, ApiLoginResponse } from './../../models/login';
 import { LoginService } from './../../services/login.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
 
   rForm: FormGroup;
   _modelLogin: Login;
-  respSvcLogin: ApiLogin;
+  respSvcLogin: ApiLoginResponse;
   messageError: string;
 
   constructor(private router: Router, private fb: FormBuilder, private _LoginService: LoginService) {
@@ -30,14 +30,14 @@ export class LoginComponent implements OnInit {
     });
 
     this._modelLogin = new Login("", "");
-    this.respSvcLogin = new ApiLogin(false, '', '')
+    this.respSvcLogin = new ApiLoginResponse(false, '', '')
     this.messageError = '';
     this.strToken = '';
   }
 
   ngOnInit(): void {
     this._modelLogin = new Login("", "");
-    this.respSvcLogin = new ApiLogin(false, '', '');
+    this.respSvcLogin = new ApiLoginResponse(false, '', '');
     this.messageError = '';
   }
 

@@ -5,7 +5,7 @@ export interface ILogin {
 
 }
 
-export interface IApiLogin {
+export interface IApiLoginResponse {
   success : boolean,
   message : string,
   token? : string
