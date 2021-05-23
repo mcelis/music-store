@@ -13,7 +13,7 @@
 
         <input matInput formControlName="user" placeholder="Usuario" />
         <mat-icon matSuffix>face</mat-icon>
-        <mat-hint>Errors appear instantly!</mat-hint>
+        <mat-hint></mat-hint>
         <mat-error
           *ngIf="
             !rForm.controls['user'].valid && rForm.controls['user'].touched
@@ -34,7 +34,7 @@
           formControlName="password"
         />
         <mat-icon matSuffix>visibility_off</mat-icon>
-        <mat-hint>Errors appear instantly!</mat-hint>
+        <mat-hint></mat-hint>
         <mat-error
           *ngIf="
             !rForm.controls['password'].valid &&
@@ -68,7 +68,7 @@
           [routerLink]="['/userRegister']"
           type="button"
           mat-raised-button
-          color="primary"
+          color="warn"
           style="width: 100%"
         >
           Crear nuevo usuario

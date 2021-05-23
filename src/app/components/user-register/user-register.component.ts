@@ -59,6 +59,7 @@ export class UserRegisterComponent implements OnInit {
 
         if (data.success) {
           this.messageSucces = data.message;
+          this.clearInputs();
         } else {
           this.messageError = data.message;
         }
@@ -66,6 +67,10 @@ export class UserRegisterComponent implements OnInit {
       err => { }
     );
 
+  }
+
+  clearInputs() {
+    this.rForm.reset();
   }
 
 }
