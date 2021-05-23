@@ -1,10 +1,30 @@
-<h3>{{ cd.title | uppercase}}</h3>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            {{ cd.title | uppercase}}
+        </mat-card-title>
+        <mat-card-subtitle>
+            {{cd.price | currency}}
+        </mat-card-subtitle>
+    </mat-card-header>
+    <div class="crop-image">
+        <img [src]="cd.image" alt="">
+    </div>
+    <mat-card-content>
+        <p>{{cd.description}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+        <a mat-raised-button color="secundary" [routerLink]="['/disco', cd.id]">Details</a>
+        <button mat-raised-button color="primary" (click)="addCart()">+ Cart</button>
+    </mat-card-actions>
+</mat-card>
+<!--<h3>{{ cd.title | uppercase}}</h3>
 <img [src]="cd.image" alt="">
 <strong>{{cd.price | currency}}</strong>
 <p>{{cd.description}}</p>
 <p>{{sysdate | date}}</p>
-<button (click)="addCart()">+ Cart</button>
-<a [routerLink]="['/disco', cd.id]">Details</a>
+<button mat-raised-button color="primary" (click)="addCart()">+ Cart</button>
+<a [routerLink]="['/disco', cd.id]">Details</a> -->
 
 
 

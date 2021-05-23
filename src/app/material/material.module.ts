@@ -6,6 +6,7 @@ import { MatInputModule } from "@angular/material/input";
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTableModule} from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
+import {MatBadgeModule} from '@angular/material/badge'; 
 
 // Aqui agregar todos los import de los componentes de Material!
 
@@ -18,7 +19,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatInputModule,
     MatExpansionModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    MatBadgeModule
 
   ],
   exports:[
@@ -27,7 +29,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatInputModule,
     MatExpansionModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    MatBadgeModule
   ]
 })
 export class MaterialModule { }

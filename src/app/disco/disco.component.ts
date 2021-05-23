@@ -30,6 +30,50 @@ export class DiscoComponent implements OnInit {
       artist:'',
       released:'',
       genre:''
+    },
+    {
+      id:'3',
+      image:'assets/images/ultra.png',
+      title:'Ultra - Depeche Mode',
+      price: 30000,
+      description: 'Depeche Mode 1996 CD',
+      type:'',
+      artist:'',
+      released:'',
+      genre:''
+    },
+    {
+      id:'4',
+      image:'assets/images/backinblack.png',
+      title:'Back in Black - AC/DC',
+      price: 28000,
+      description: 'AC/CD 1980 CD',
+      type:'',
+      artist:'',
+      released:'',
+      genre:''
+    },
+    {
+      id:'5',
+      image:'assets/images/ultra.png',
+      title:'Ultra - Depeche Mode',
+      price: 30000,
+      description: 'Depeche Mode 1996 CD',
+      type:'',
+      artist:'',
+      released:'',
+      genre:''
+    },
+    {
+      id:'6',
+      image:'assets/images/backinblack.png',
+      title:'Back in Black - AC/DC',
+      price: 28000,
+      description: 'AC/CD 1980 CD',
+      type:'',
+      artist:'',
+      released:'',
+      genre:''
     }
   ];
 
