@@ -1,7 +1,7 @@
 
 <div class="disc-table">
   <app-disc
-    *ngFor="let cd of cds"
+    *ngFor="let cd of cds.data"
     (discadded)="addDisc($event)"
     [cd]="cd"
   ></app-disc>

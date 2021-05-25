@@ -9,3 +9,9 @@ export interface IDisc{
     released:string;
     genre:string;
 }
+
+export interface IApiDiscResponse {
+    success : boolean,
+    message : string,
+    data? : Array<IDisc>
+}

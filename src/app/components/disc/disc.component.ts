@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { IDisc } from 'src/app/interfaces/idisc';
 import {DiscoComponent} from '../../disco/disco.component';
 import {Disc} from '../../models/disc';
 import {CartService} from '../../services/cart.service';
@@ -11,7 +12,7 @@ import {CartService} from '../../services/cart.service';
 export class DiscComponent implements OnInit {
 
   title='music-store';
-  @Input() cd: Disc;
+  @Input() cd: IDisc;
   @Output()
   discadded: EventEmitter<any> = new EventEmitter();
 

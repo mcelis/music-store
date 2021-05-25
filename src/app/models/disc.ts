@@ -1,5 +1,5 @@
 
-import {IDisc} from '../interfaces/idisc'
+import {IApiDiscResponse, IDisc} from '../interfaces/idisc'
 export class Disc implements IDisc{
     id: string;
     title: string;
@@ -21,5 +21,21 @@ export class Disc implements IDisc{
         this.artist = artist;
         this.released = released;
         this.genre = genre;
+    }
+}
+
+export class ApiDiscResponse implements IApiDiscResponse {
+    success : boolean;
+    message : string;
+    data? : Array<IDisc>;
+
+    constructor(
+        success : boolean,
+        message : string,
+        data? : Array<IDisc>
+    ){
+        this.success = success;
+        this.message = message;
+        this.data = data;
     }
 }

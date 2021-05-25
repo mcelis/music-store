@@ -21,7 +21,7 @@ export class DiscDetailComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((params: Params)=>{
       const id = params.id;
-      this.disc = this.discService.getDisc(id);
+      //this.disc = this.discService.getDisc(id);
       
     });
   }

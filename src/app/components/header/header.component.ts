@@ -21,6 +21,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.isAuth = this.storageService.isAuthenticated();
+    console.log(">>> isAuth "+this.isAuth);
   }
 
 

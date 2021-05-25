@@ -36,18 +36,18 @@ export class StorageService {
     this.currentSession = this._newSession;
   }
 
-  getCurrentUser(): string {
+  getCurrentUser(): string| null {
     var session: Session|null = this.getCurrentSession();
-    return (session && session.user) ? session.user : '';
+    return (session && session.user) ? session.user : null;
   };
 
   isAuthenticated(): boolean {
     return (this.getCurrentToken() != null) ? true : false;
   };
 
-  getCurrentToken(): string {
+  getCurrentToken(): string|null {
     var session = this.getCurrentSession();
-    return (session && session.token) ? session.token : '';
+    return (session && session.token) ? session.token : null;
   };
 
   logout(): void {

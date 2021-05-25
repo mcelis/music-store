@@ -1,7 +1,9 @@
 import { Router } from '@angular/router';
 import { StorageService } from './../services/storage.service';
 import { Component, OnInit } from '@angular/core';
-import { Disc } from '../models/disc';
+import { ApiDiscResponse, Disc } from '../models/disc';
+import {DiscService} from '../services/disc.service';
+import { IApiDiscResponse } from '../interfaces/idisc';
 
 @Component({
   selector: 'app-disco',
@@ -12,8 +14,9 @@ export class DiscoComponent implements OnInit {
 
   public user: string | null;
   public token: string | null;
+  public cds: ApiDiscResponse;
 
-  cds: Disc[] = [
+  /*cds: Disc[] = [
     {
       id: '1',
       image: 'assets/images/ultra.png',
@@ -80,22 +83,47 @@ export class DiscoComponent implements OnInit {
       released: '',
       genre: ''
     }
-  ];
+  ];*/
 
 
-  constructor(private router: Router, private storageService: StorageService,) {
+  constructor(
+    private router: Router, 
+    private storageService: StorageService, 
+    private discWs: DiscService
+    ) {
     this.user = "";
     this.token = '';
+    this.cds = new ApiDiscResponse(false,'');
   }
 
   ngOnInit(): void {
-    if (!this.storageService.isAuthenticated()) {
+    debugger;
+    console.log(" entro al nginit>>> ");
+    /*if (!this.storageService.isAuthenticated()) {
       this.router.navigate(["/login"]);
-    }
+    }else{
+      this.getDisc();
+    }*/
+    this.getDisc();
+    console.log(" despues del nginit>>> ");
   }
   addDisc(id: string) {
     console.log('Compact Disc');
     console.log(id);
+  }
+
+  getDisc(){
+    debugger;
+    this.discWs.getDiscWs().subscribe(
+      data => {
+        if(data.success){
+          debugger;
+          this.cds = data.data;
+          console.log(" lista de discos>>> "+this.cds);
+        }
+      },err => {console.log("error>>>"+err)}
+
+    );
   }
 
 }
