@@ -1,3 +1,4 @@
+import { ApiDiscResponse } from './../../models/disc';
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { IDisc } from 'src/app/interfaces/idisc';
 import {DiscoComponent} from '../../disco/disco.component';
@@ -12,14 +13,14 @@ import {CartService} from '../../services/cart.service';
 export class DiscComponent implements OnInit {
 
   title='music-store';
-  @Input() cd: IDisc;
+  @Input() cd: Disc;
   @Output()
   discadded: EventEmitter<any> = new EventEmitter();
 
   sysdate = new Date();
 
-  
-  
+
+
   addCart(){
     console.log('se agrego al carrito');
     this.cartService.addCart(this.cd);
@@ -27,7 +28,7 @@ export class DiscComponent implements OnInit {
   }
   constructor(
     private cartService: CartService
-  ) { 
+  ) {
     this.cd = new Disc('','',0,'','','','','','');
   }
 

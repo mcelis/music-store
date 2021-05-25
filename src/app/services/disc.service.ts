@@ -36,8 +36,7 @@ export class DiscService {
       genre:''
     }
   ];*/
-  constructor(private http: HttpClient,private storageService: StorageService) 
-  { 
+  constructor(private http: HttpClient, private storageService: StorageService) {
     /*this.disc = new Disc('','',0,'','','','','','')*/
   }
 
@@ -45,16 +44,14 @@ export class DiscService {
     return this.cds;
   }*/
 
-  getDisc(id: string){
+  getDisc(id: string) {
     //return this.cds.find(item => id == item.id);
     return null;
   }
 
-  getDiscWs():Observable<any>{
-    debugger;
-    const token = this.storageService.getCurrentToken(); 
+  getDiscWs(): Observable<any> {
+    const token = this.storageService.getCurrentToken();
     const headers = new HttpHeaders({
-      
       'Authorization': `Bearer ${token}`
     })
     return this.http.get<IApiDiscResponse>('/api/Disc', { headers: headers });
