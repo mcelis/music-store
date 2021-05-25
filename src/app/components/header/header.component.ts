@@ -1,5 +1,6 @@
+import { StorageService } from './../../services/storage.service';
 import { Component, Input, OnInit } from '@angular/core';
-import {CartService} from '../../services/cart.service';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -7,20 +8,19 @@ import {CartService} from '../../services/cart.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
-  //token: string;
-  @Input() token: string;
+  isAuth: boolean;
   totalDiscs = 0;
   constructor(
-    private cartService: CartService
+    private cartService: CartService, private storageService: StorageService
   ) {
-    this.token = '';
-    this.cartService.cartEvent$.subscribe(discs =>{
+    this.cartService.cartEvent$.subscribe(discs => {
       this.totalDiscs = discs.length;
     });
+    this.isAuth = false;
   }
 
   ngOnInit(): void {
+    this.isAuth = this.storageService.isAuthenticated();
   }
 
 
