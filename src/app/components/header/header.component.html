@@ -4,8 +4,22 @@
 </mat-toolbar>
 
 {{token}}
-<nav>
-    <a routerLink="/home" routerLinkActive="active">Home</a>
-    <a routerLink="/disco" routerLinkActive="active">Disc</a>
-    <a routerLink="/contact" routerLinkActive="active">Contact</a>
-</nav>
+
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <div class="row between-xs middle-xs header-row">
+      <nav>
+        <a mat-button routerLink="/home" routerLinkActive="active">Home</a>
+        <a mat-button routerLink="/disco" routerLinkActive="active">Disc</a>
+        <a mat-button routerLink="/contact" routerLinkActive="active">Contact</a>
+      </nav>
+      <a mat-raised-button [matBadge]="totalDiscs" matBadgeColor="warn">
+        <mat-icon>shopping_cart</mat-icon>
+        Cart
+      </a>
+    </div>
+    
+  
+  </mat-toolbar-row>
+</mat-toolbar>
+

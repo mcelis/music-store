@@ -26,6 +26,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { MatBadgeModule } from '@angular/material/badge';
 
 
 import { LoginComponent } from './components/login/login.component';
@@ -61,7 +62,8 @@ import { UserRegisterComponent } from './components/user-register/user-register.
     MatExpansionModule,
     MatTableModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
