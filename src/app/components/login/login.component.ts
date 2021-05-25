@@ -21,6 +21,8 @@ export class LoginComponent implements OnInit {
   respSvcLogin: ApiLoginResponse;
   messageError: string | null;
 
+  hide = true;
+
   constructor(private router: Router, private fb: FormBuilder, private _LoginService: LoginService, private storageService: StorageService) {
 
     this.rForm = fb.group({
@@ -31,7 +33,7 @@ export class LoginComponent implements OnInit {
     this._modelLogin = new Login("", "");
     this.respSvcLogin = new ApiLoginResponse(false, '', '')
     this.messageError = '';
-    this.session = new Session('', '');
+    this.session = new Session('', '', '');
   }
 
   ngOnInit(): void {
@@ -55,6 +57,7 @@ export class LoginComponent implements OnInit {
 
           this.session.token = data.token;
           this.session.user = post.user;
+          this.session.rol = data.rol;
 
           this.storageService.setCurrentSession(this.session);
 

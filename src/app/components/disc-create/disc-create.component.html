@@ -1,0 +1,206 @@
+<div class="example-container">
+  <div class="form-container">
+    <form
+      [formGroup]="rForm"
+      (ngSubmit)="onSubmit(rForm.value)"
+      class="form"
+      novalidate
+    >
+      <mat-form-field class="form-element" hintLabel="Max 50 caracteres">
+        <mat-label>Titulo</mat-label>
+
+        <input
+          matInput
+          #inputtitle
+          maxlength="50"
+          formControlName="title"
+          placeholder="Titulo"
+        />
+        <mat-icon matSuffix>edit</mat-icon>
+        <mat-hint align="end">{{ inputtitle.value?.length || 0 }}/50</mat-hint>
+        <mat-error
+          *ngIf="
+            !rForm.controls['title'].valid && rForm.controls['title'].touched
+          "
+        >
+          Debe ingresar un title con más de 3 caracteres!
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-element" hintLabel="Max 220 caracteres">
+        <mat-label>Descripcion</mat-label>
+
+        <textarea
+          matInput
+          #inputdescription
+          maxlength="220"
+          placeholder="Descripcion"
+          formControlName="description"
+          rows="4"
+          cols="50"
+        ></textarea>
+
+        <mat-icon matSuffix>description</mat-icon>
+        <mat-hint align="end"
+          >{{ inputdescription.value?.length || 0 }}/220</mat-hint
+        >
+        <mat-error
+          *ngIf="
+            !rForm.controls['description'].valid &&
+            rForm.controls['description'].touched
+          "
+        >
+          Debe ingresar una descripcion con mas de 6 caracteres
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-element">
+        <mat-label>Tipo</mat-label>
+
+        <mat-select formControlName="type" placeholder="Tipo">
+          <mat-option value="cd">CD</mat-option>
+          <mat-option value="vinyl">Vinilo</mat-option>
+          <mat-option value="Cassette">Cassette</mat-option>
+        </mat-select>
+
+        <mat-hint></mat-hint>
+        <mat-error
+          *ngIf="
+            !rForm.controls['type'].valid && rForm.controls['type'].touched
+          "
+        >
+          Debe ingresar un tipo
+        </mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field class="form-element" hintLabel="Max 4 caracteres">
+        <mat-label>Año de lanzamiento</mat-label>
+        <input
+          matInput
+          #inputreleased
+          maxlength="4"
+          minlength="4"
+          formControlName="released"
+          placeholder="released"
+          type="text"
+          pattern="\d*"
+        />
+        <mat-icon matSuffix>calendar_today</mat-icon>
+        <mat-hint align="end"
+          >{{ inputreleased.value?.length || 0 }}/4</mat-hint
+        >
+        <mat-error
+          *ngIf="
+            !rForm.controls['released'].valid &&
+            rForm.controls['released'].touched
+          "
+        >
+          Debe ingresar el año de lanzamiento
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-element">
+        <mat-label>Genero</mat-label>
+        <input
+          matInput
+          formControlName="genre"
+          placeholder="Genero"
+          type="text"
+        />
+        <mat-icon matSuffix>mail</mat-icon>
+        <mat-hint></mat-hint>
+        <mat-error
+          *ngIf="
+            !rForm.controls['genre'].valid && rForm.controls['genre'].touched
+          "
+        >
+          Debe ingresar un genero valido
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-element">
+        <mat-label>Precio</mat-label>
+        <input matInput formControlName="price" placeholder="Precio" />
+        <mat-icon matSuffix>paid</mat-icon>
+        <mat-hint align="end"></mat-hint>
+        <mat-error
+          *ngIf="
+            !rForm.controls['price'].valid && rForm.controls['price'].touched
+          "
+        >
+          Debe ingresar valor para el disco
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-element">
+        <mat-label>Artista</mat-label>
+        <input
+          matInput
+          formControlName="artist"
+          placeholder="Artista del disco"
+        />
+        <mat-icon matSuffix>person</mat-icon>
+        <mat-hint></mat-hint>
+        <mat-error
+          *ngIf="
+            !rForm.controls['artist'].valid && rForm.controls['artist'].touched
+          "
+        >
+          Debe subir una imagen
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-element">
+        <mat-label>Imagen del disco</mat-label>
+        <input
+          matInput
+          formControlName="image"
+          placeholder="Imagen del disco"
+        />
+        <mat-icon matSuffix>image</mat-icon>
+        <mat-hint></mat-hint>
+        <mat-error
+          *ngIf="
+            !rForm.controls['image'].valid && rForm.controls['image'].touched
+          "
+        >
+          Debe subir una imagen
+        </mat-error>
+      </mat-form-field>
+
+      <mat-card *ngIf="messageError" style="color: red">{{
+        messageError
+      }}</mat-card>
+
+      <mat-card *ngIf="messageSucces" style="color: green">{{
+        messageSucces
+      }}</mat-card>
+
+      <br />
+
+      <button
+        [disabled]="!rForm.valid"
+        type="submit"
+        mat-raised-button
+        color="primary"
+        style="width: 100%"
+      >
+        Crear nuevo disco
+        <span class="material-icons"> catching_pokemon </span>
+      </button>
+
+      <br /><br />
+
+      <button
+        type="button"
+        (click)="clearInputs()"
+        mat-raised-button
+        color="warn"
+        style="width: 100%"
+      >
+        Limpiar campos <span class="material-icons"> cleaning_services </span>
+      </button>
+    </form>
+  </div>
+</div>

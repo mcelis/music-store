@@ -1,8 +1,8 @@
+import { Disc } from './../models/disc';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IApiDiscResponse, IDisc } from '../interfaces/idisc';
-import { Disc } from '../models/disc';
 import { StorageService } from './storage.service';
 
 
@@ -44,9 +44,12 @@ export class DiscService {
     return this.cds;
   }*/
 
-  getDisc(id: string) {
-    //return this.cds.find(item => id == item.id);
-    return null;
+  getDiscByIdWs(id: string | null): Observable<any> {
+    const token = this.storageService.getCurrentToken();
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    })
+    return this.http.get<IApiDiscResponse>(`/api/Disc?id=${id}`, { headers: headers });
   }
 
   getDiscWs(): Observable<any> {
@@ -56,4 +59,21 @@ export class DiscService {
     })
     return this.http.get<IApiDiscResponse>('/api/Disc', { headers: headers });
   }
+
+  createDiscWs(disc: IDisc): Observable<any> {
+    const token = this.storageService.getCurrentToken();
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    })
+    return this.http.post<IApiDiscResponse>('/api/Disc', disc, { headers: headers });
+  }
+
+  updateDiscWs(id: number, disc: IDisc): Observable<any> {
+    const token = this.storageService.getCurrentToken();
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    })
+    return this.http.put<IApiDiscResponse>(`/api/Disc/${id}`, disc, { headers: headers });
+  }
+
 }

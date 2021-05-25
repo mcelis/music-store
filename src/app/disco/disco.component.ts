@@ -93,12 +93,11 @@ export class DiscoComponent implements OnInit {
   ) {
     this.user = "";
     this.token = '';
-    this.cds = [new Disc('','',0,'','','','','','')]
+    this.cds = [new Disc(0,'',0,'','','','','','')]
   }
 
   ngOnInit(): void {
-    debugger;
-    console.log(" entro al nginit>>> ");
+
     if (!this.storageService.isAuthenticated()) {
       this.router.navigate(["/login"]);
     }else{

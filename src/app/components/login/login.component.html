@@ -8,16 +8,18 @@
       class="form"
       novalidate
     >
-      <mat-form-field class="form-element">
+      <mat-form-field class="form-element" hintLabel="Max 20 caracteres">
         <mat-label>Usuario</mat-label>
         <input
           matInput
+          #inputuser
+          maxlength="20"
           formControlName="user"
           placeholder="Usuario"
           (keydown)="clearError()"
         />
         <mat-icon matSuffix>face</mat-icon>
-        <mat-hint></mat-hint>
+        <mat-hint align="end">{{ inputuser.value?.length || 0 }}/20</mat-hint>
         <mat-error
           *ngIf="
             !rForm.controls['user'].valid && rForm.controls['user'].touched
@@ -29,17 +31,31 @@
 
       <br />
 
-      <mat-form-field class="form-element">
+      <mat-form-field class="form-element" hintLabel="Max 20 caracteres">
         <mat-label>Contraseña</mat-label>
         <input
           matInput
-          type="password"
+          #inputpassword
+          maxlength="20"
+          [type]="hide ? 'password' : 'text'"
           placeholder="password"
           formControlName="password"
           (keydown)="clearError()"
         />
-        <mat-icon matSuffix>visibility_off</mat-icon>
-        <mat-hint></mat-hint>
+        <!-- <mat-icon matSuffix>visibility_off</mat-icon> -->
+        <button
+          mat-icon-button
+          type="button"
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+        <mat-hint align="end"
+          >{{ inputpassword.value?.length || 0 }}/20</mat-hint
+        >
         <mat-error
           *ngIf="
             !rForm.controls['password'].valid &&
@@ -65,6 +81,7 @@
           style="width: 100%"
         >
           Iniciar sesion
+          <span class="material-icons"> login </span>
         </button>
 
         <br />

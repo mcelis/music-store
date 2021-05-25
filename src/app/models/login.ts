@@ -21,14 +21,17 @@ export class Login implements ILogin {
 export class ApiLoginResponse implements IApiLoginResponse {
   success: boolean;
   message: string;
+  rol?: string;
   token?: string;
 
   constructor(
     success: boolean,
     message: string,
+    rol?: string,
     token?: string) {
     this.success = success;
     this.message = message;
+    this.rol = rol;
     this.token = token;
   }
 

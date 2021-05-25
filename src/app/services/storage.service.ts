@@ -9,12 +9,12 @@ export class StorageService {
 
   private localStorageService;
   private currentSession: Session;
-  private _newSession:Session;
+  private _newSession: Session;
 
   constructor(private router: Router) {
     this.localStorageService = localStorage;
     this.currentSession = this.loadSessionData();
-    this._newSession = new Session('','');
+    this._newSession = new Session('', '', '');
   }
 
   setCurrentSession(session: Session): void {
@@ -36,8 +36,8 @@ export class StorageService {
     this.currentSession = this._newSession;
   }
 
-  getCurrentUser(): string| null {
-    var session: Session|null = this.getCurrentSession();
+  getCurrentUser(): string | null {
+    var session: Session | null = this.getCurrentSession();
     return (session && session.user) ? session.user : null;
   };
 
@@ -45,9 +45,19 @@ export class StorageService {
     return (this.getCurrentToken() != null) ? true : false;
   };
 
-  getCurrentToken(): string|null {
+  getCurrentToken(): string | null {
     var session = this.getCurrentSession();
     return (session && session.token) ? session.token : null;
+  };
+
+  getCurrentRol(): string | null {
+    var session = this.getCurrentSession();
+    return (session && session.rol) ? session.rol : null;
+  };
+
+  getCurrentRolIsAdmin(): boolean {
+    var session = this.getCurrentSession();
+    return (session && session.rol) ? session.rol == 'admin' : false;
   };
 
   logout(): void {

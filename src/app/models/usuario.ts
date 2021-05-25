@@ -8,6 +8,7 @@ export class UserInfo implements IUserInfo {
   surnames: string;
   email: string;
   phone: number;
+  rol: string;
 
   constructor(
     user: string,
@@ -16,6 +17,7 @@ export class UserInfo implements IUserInfo {
     surnames: string,
     email: string,
     phone: number,
+    rol: string
   ) {
 
     this.user = user;
@@ -24,7 +26,7 @@ export class UserInfo implements IUserInfo {
     this.surnames = surnames;
     this.email = email;
     this.phone = phone;
-
+    this.rol = rol;
   }
 
 }

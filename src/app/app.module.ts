@@ -27,10 +27,12 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatBadgeModule } from '@angular/material/badge';
-
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 import { LoginComponent } from './components/login/login.component';
 import { UserRegisterComponent } from './components/user-register/user-register.component';
+import { DiscCreateComponent } from './components/disc-create/disc-create.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { UserRegisterComponent } from './components/user-register/user-register.
     LoginComponent,
     UserRegisterComponent,
     DiscDetailComponent,
-    LayoutComponent
+    LayoutComponent,
+    DiscCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +66,10 @@ import { UserRegisterComponent } from './components/user-register/user-register.
     MatTableModule,
     MatIconModule,
     MatCardModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatFormFieldModule,
+    MatSelectModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

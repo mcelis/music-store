@@ -1,0 +1,46 @@
+.center{
+  display: flex;
+  justify-content: center;
+}
+
+// .fill-remaining-space {
+//   /* This fills the remaining space, by using flexbox.
+//      Every toolbar row uses a flexbox row layout. */
+//   flex: 1 1 auto;
+// }
+
+.container {
+  padding: 10px;
+}
+
+.form {
+
+  width: 420px;
+  margin: 35px auto 100px;
+  display: block;
+  float: none;
+
+}
+
+.form-element {
+  padding: 5px 0px 25px 2px;
+  width: 100%;
+}
+
+.button {
+  width: 100%;
+  cursor: pointer;
+}
+
+.example-container .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.example-right-align {
+  -moz-appearance: textfield;
+}

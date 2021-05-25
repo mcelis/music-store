@@ -1,5 +1,5 @@
 export interface IDisc{
-    id: string;
+    id: number|undefined;
     title: string;
     price: number;
     description: string;

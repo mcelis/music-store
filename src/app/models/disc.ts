@@ -1,7 +1,7 @@
 
 import {IApiDiscResponse, IDisc} from '../interfaces/idisc'
 export class Disc implements IDisc{
-    id: string;
+    id: number|undefined;
     title: string;
     price: number;
     description: string;
@@ -11,7 +11,7 @@ export class Disc implements IDisc{
     released:string;
     genre:string;
 
-    constructor(id:string,title:string,price:number,description:string,image:string,type:string,artist:string,released:string,genre:string){
+    constructor(id:number,title:string,price:number,description:string,image:string,type:string,artist:string,released:string,genre:string){
         this.id = id;
         this.title = title;
         this.price = price;
@@ -27,12 +27,12 @@ export class Disc implements IDisc{
 export class ApiDiscResponse implements IApiDiscResponse {
     success : boolean;
     message : string;
-    data? : Array<IDisc>;
+    data? : Array<Disc>;
 
     constructor(
         success : boolean,
         message : string,
-        data? : Array<IDisc>
+        data? : Array<Disc>
     ){
         this.success = success;
         this.message = message;

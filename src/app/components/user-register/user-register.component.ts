@@ -32,7 +32,7 @@ export class UserRegisterComponent implements OnInit {
 
     });
 
-    this._modelIUserInfo = new UserInfo("", "", "", "", "", 0);
+    this._modelIUserInfo = new UserInfo("", "", "", "", "", 0, "");
     this.respSvcUser = new ApiUserInfoResponse(false, '');
     this.messageError = '';
     this.messageSucces = '';
@@ -54,13 +54,16 @@ export class UserRegisterComponent implements OnInit {
     this._modelIUserInfo.surnames = post.surnames;
     this._modelIUserInfo.email = post.email;
     this._modelIUserInfo.phone = post.phone;
+    this._modelIUserInfo.rol = 'user';
 
     this._UserService.createUser(this._modelIUserInfo).subscribe(
       data => {
 
         if (data.success) {
           this.messageSucces = data.message;
-          this.clearInputs();
+
+          this.router.navigate(['/login']);
+          //this.clearInputs();
         } else {
           this.messageError = data.message;
         }

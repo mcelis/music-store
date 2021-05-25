@@ -29,7 +29,7 @@ export class DiscComponent implements OnInit {
   constructor(
     private cartService: CartService
   ) {
-    this.cd = new Disc('','',0,'','','','','','');
+    this.cd = new Disc(0,'',0,'','','','','','');
   }
 
   ngOnInit() :void{

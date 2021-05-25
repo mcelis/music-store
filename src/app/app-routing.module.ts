@@ -1,3 +1,4 @@
+import { DiscCreateComponent } from './components/disc-create/disc-create.component';
 import { UserRegisterComponent } from './components/user-register/user-register.component';
 import { LoginComponent } from './components/login/login.component';
 import { NgModule } from '@angular/core';
@@ -12,7 +13,7 @@ const routes: Routes = [
   {
     path:'',
     component: LayoutComponent,
-    
+
     children:[
       {
         path:'',
@@ -30,6 +31,10 @@ const routes: Routes = [
       {
         path:'disco/:id',
         component: DiscDetailComponent
+      },
+      {
+        path:'discoNuevo',
+        component: DiscCreateComponent
       },
       {
         path:'contact',

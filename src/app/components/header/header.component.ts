@@ -9,6 +9,8 @@ import { CartService } from '../../services/cart.service';
 })
 export class HeaderComponent implements OnInit {
   isAuth: boolean;
+  isAdmin: boolean;
+
   totalDiscs = 0;
   constructor(
     private cartService: CartService, private storageService: StorageService
@@ -17,11 +19,12 @@ export class HeaderComponent implements OnInit {
       this.totalDiscs = discs.length;
     });
     this.isAuth = false;
+    this.isAdmin = false;
   }
 
   ngOnInit(): void {
     this.isAuth = this.storageService.isAuthenticated();
-    console.log(">>> isAuth " + this.isAuth);
+    this.isAdmin = this.storageService.getCurrentRolIsAdmin();
   }
 
   LogOut() {
