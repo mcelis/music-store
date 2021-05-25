@@ -17,7 +17,7 @@ export class UserRegisterComponent implements OnInit {
   rForm: FormGroup;
   _modelIUserInfo: UserInfo;
   respSvcUser: ApiUserInfoResponse;
-  messageError: string;
+  messageError: string | null;
   messageSucces: string;
 
   constructor(private router: Router, private fb: FormBuilder, private _UserService: UserInfoService) {
@@ -42,6 +42,7 @@ export class UserRegisterComponent implements OnInit {
   }
 
   onSubmit(post: any) {
+    this.messageError = '';
     this.userRegister(post);
   }
 
@@ -63,6 +64,7 @@ export class UserRegisterComponent implements OnInit {
         } else {
           this.messageError = data.message;
         }
+
       },
       err => { }
     );
@@ -71,6 +73,10 @@ export class UserRegisterComponent implements OnInit {
 
   clearInputs() {
     this.rForm.reset();
+  }
+
+  clearError() {
+    this.messageError = '';
   }
 
 }

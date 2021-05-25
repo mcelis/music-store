@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   rForm: FormGroup;
   _modelLogin: Login;
   respSvcLogin: ApiLoginResponse;
-  messageError: string;
+  messageError: string | null;
 
   constructor(private router: Router, private fb: FormBuilder, private _LoginService: LoginService) {
 
@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(post: any) {
+    this.messageError = '';
     this.userLogin(post);
   }
 
@@ -53,6 +54,9 @@ export class LoginComponent implements OnInit {
       data => {
         if (data.success) {
           this.strToken = data.token;
+
+//          this.localStorageService.setItem('currentUser', JSON.stringify(session));
+
           this.router.navigate(["/disco"]);
         } else {
           this.messageError = data.message;
@@ -65,6 +69,8 @@ export class LoginComponent implements OnInit {
 
   }
 
-
+  clearError() {
+    this.messageError = null;
+  }
 
 }

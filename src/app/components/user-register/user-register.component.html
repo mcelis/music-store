@@ -11,7 +11,7 @@
       <mat-form-field class="form-element">
         <mat-label>Usuario</mat-label>
 
-        <input matInput formControlName="user" placeholder="Usuario" />
+        <input matInput formControlName="user" placeholder="Usuario" (keydown)="clearError()"/>
         <mat-icon matSuffix>face</mat-icon>
         <mat-hint></mat-hint>
         <mat-error
@@ -88,6 +88,7 @@
           placeholder="Correo"
           type="email"
           pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+          (keydown)="clearError()"
         />
         <mat-icon matSuffix>mail</mat-icon>
         <mat-hint></mat-hint>
@@ -141,7 +142,7 @@
         type="button"
         (click)="clearInputs()"
         mat-raised-button
-        color="accent"
+        color="warn"
         style="width: 100%"
       >
         Limpiar campos <span class="material-icons"> cleaning_services </span>
