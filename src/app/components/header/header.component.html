@@ -7,25 +7,22 @@
         <a mat-button routerLink="/home" routerLinkActive="active">Home</a>
         <a mat-button routerLink="/disco" routerLinkActive="active">Disc</a>
         <a mat-button routerLink="/contact" routerLinkActive="active">Contact</a>
-
         <a mat-button *ngIf="isAdmin" routerLink="/discoNuevo" routerLinkActive="active">Crear disco</a>
-
       </nav>
-      <a mat-raised-button [matBadge]="totalDiscs" matBadgeColor="warn">
-        <mat-icon>shopping_cart</mat-icon>
-        Cart
-      </a>
-      <button
-      type="button"
-      (click)="LogOut()"
-      mat-raised-button
-      color="warn"
-    >
-      LogOut <span class="material-icons"> cleaning_services </span>
-    </button>
+      <nav>
+          <a
+            type="button"
+            (click)="LogOut()"
+            mat-raised-button
+            color="warn">
+            LogOut <span class="material-icons"> cleaning_services </span>
+          </a>
+          <a mat-raised-button [matBadge]="totalDiscs" matBadgeColor="warn">
+            <mat-icon>shopping_cart</mat-icon>
+            Cart
+          </a>
+      </nav>
     </div>
-
-
   </mat-toolbar-row>
 </mat-toolbar>
 
